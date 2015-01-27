@@ -6,11 +6,50 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		466A24E41A780F9F00123DFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 466A24DF1A780F9E00123DFE /* Calculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 466A24BA1A780F9E00123DFE;
+			remoteInfo = Calculator;
+		};
+		466A24E61A780F9F00123DFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 466A24DF1A780F9E00123DFE /* Calculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 466A24CF1A780F9E00123DFE;
+			remoteInfo = CalculatorTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		466A24DF1A780F9E00123DFE /* Calculator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Calculator.xcodeproj; path = Calculator/Calculator.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		466A24A91A780F5B00123DFE = {
 			isa = PBXGroup;
 			children = (
+				466A24B01A780F7800123DFE /* Calculator */,
 			);
+			sourceTree = "<group>";
+		};
+		466A24B01A780F7800123DFE /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				466A24DF1A780F9E00123DFE /* Calculator.xcodeproj */,
+			);
+			name = Calculator;
+			sourceTree = "<group>";
+		};
+		466A24E01A780F9E00123DFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				466A24E51A780F9F00123DFE /* Calculator.app */,
+				466A24E71A780F9F00123DFE /* CalculatorTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -30,11 +69,34 @@
 			);
 			mainGroup = 466A24A91A780F5B00123DFE;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 466A24E01A780F9E00123DFE /* Products */;
+					ProjectRef = 466A24DF1A780F9E00123DFE /* Calculator.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		466A24E51A780F9F00123DFE /* Calculator.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Calculator.app;
+			remoteRef = 466A24E41A780F9F00123DFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		466A24E71A780F9F00123DFE /* CalculatorTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CalculatorTests.xctest;
+			remoteRef = 466A24E61A780F9F00123DFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin XCBuildConfiguration section */
 		466A24AE1A780F5B00123DFE /* Debug */ = {
