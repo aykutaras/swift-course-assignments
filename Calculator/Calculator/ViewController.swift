@@ -10,26 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
-    var userIsInTheMiddleOfTypingANumber: Bool = false;
-    var userAlreadyUsedFloatinPoint = false
+    @IBOutlet weak var history: UILabel!
     
+    var userIsInTheMiddleOfTypingANumber: Bool = false;
     var operandStack: Array<Double> = Array<Double>()
     
     @IBAction func operation(sender: UIButton) {
         let digit = sender.currentTitle!
         
-        if digit == "." {
-            if userAlreadyUsedFloatinPoint {
-                return
-            }
-            
-            userAlreadyUsedFloatinPoint = true
-        }
+        if digit == "." && display.text!.rangeOfString(digit) != nil { return }
         
         if userIsInTheMiddleOfTypingANumber {
             display.text = display.text! + digit
         } else {
-            display.text = digit == "." ? "0." : digit
+            display.text = digit
             userIsInTheMiddleOfTypingANumber = true;
         }
     }
@@ -42,22 +36,48 @@ class ViewController: UIViewController {
             enter()
         }
         
+        addHistory(operation)
+        
         switch operation {
-        case "×": performOperation { $0 * $1 }
-        case "÷": performOperation { $1 / $0 }
-        case "+": performOperation { $0 + $1 }
-        case "−": performOperation { $1 - $0 }
-        case "sin": performOperation { sin($0) }
-        case "cos": performOperation { cos($0) }
-        default: break
+            case "×": performOperation { $0 * $1 }
+            case "÷": performOperation { $1 / $0 }
+            case "+": performOperation { $0 + $1 }
+            case "−": performOperation { $1 - $0 }
+            case "sin": performOperation { sin($0) }
+            case "cos": performOperation { cos($0) }
+            case "√": performOperation { sqrt($0) }
+            case "π": performOperation(M_PI)
+            default: break
+        }
+    }
+    
+    @IBAction func clear() {
+        enter()
+        displayValue = 0;
+        operandStack = Array<Double>()
+        history.text = ""
+    }
+    
+    @IBAction func backspace() {
+        display.text = dropLast(display.text!)
+        
+        if countElements(display.text!) == 0 {
+            displayValue = 0
         }
     }
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
-        userAlreadyUsedFloatinPoint = false
-        operandStack.append(displayValue)
-        println("operandStack = \(operandStack)")
+        if (displayValue != nil) {
+            operandStack.append(displayValue!)
+            println("operandStack = \(operandStack)")
+            addHistory("\(displayValue)")
+        }
+    }
+    
+    func performOperation(operation: (Double)) {
+        displayValue = operation
+        enter()
     }
     
     func performOperation(operation: (Double) -> Double) {
@@ -74,18 +94,17 @@ class ViewController: UIViewController {
         }
     }
     
-    var displayValue: Double {
+    func addHistory(item: String) {
+        history.text = history.text! + "\n" + item
+    }
+    
+    var displayValue: Double? {
         get {
-            let displayText = display.text!
-            
-            if displayText == "π" {
-                return M_PI
-            }
-            
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            let value = NSNumberFormatter().numberFromString(display.text!)
+            return value == nil ? nil : value!.doubleValue
         }
         set {
-            display.text = "\(newValue)"
+            display.text = "\(newValue!)"
             userIsInTheMiddleOfTypingANumber = false
         }
     }
