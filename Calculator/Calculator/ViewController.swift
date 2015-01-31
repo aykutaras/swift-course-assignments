@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var history: UITextView!
     
     var userIsInTheMiddleOfTypingANumber: Bool = false;
+    var operationPerformed: Bool = false
     var operandStack: Array<Double> = Array<Double>()
     
     @IBAction func operation(sender: UIButton) {
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
         
         addHistory(operation)
         
+        operationPerformed = true;
         switch operation {
             case "×": performOperation { $0 * $1 }
             case "÷": performOperation { $1 / $0 }
@@ -71,7 +73,8 @@ class ViewController: UIViewController {
         if (displayValue != nil) {
             operandStack.append(displayValue!)
             println("operandStack = \(operandStack)")
-            addHistory("\(displayValue!)")
+            addHistory((operationPerformed ? "= " : "") + "\(displayValue!)")
+            operationPerformed = false
         }
     }
     
