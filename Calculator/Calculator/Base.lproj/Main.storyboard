@@ -220,12 +220,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fp2-kr-Tdm">
-                                <rect key="frame" x="65" y="539" width="519" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXu-Sh-my7">
                                 <rect key="frame" x="16" y="539" width="41" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
@@ -246,6 +240,12 @@
                                     <action selector="backspace" destination="BYZ-38-t0r" eventType="touchUpInside" id="KA3-vm-8OM"/>
                                 </connections>
                             </button>
+                            <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNm-hP-8dK">
+                                <rect key="frame" x="65" y="539" width="519" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -265,7 +265,7 @@
                     </view>
                     <connections>
                         <outlet property="display" destination="t12-eu-KGs" id="bTD-aP-fZA"/>
-                        <outlet property="history" destination="Fp2-kr-Tdm" id="mlW-jn-4kZ"/>
+                        <outlet property="history" destination="xNm-hP-8dK" id="eic-Gq-wwS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

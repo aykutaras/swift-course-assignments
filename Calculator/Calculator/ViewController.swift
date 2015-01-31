@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
-    @IBOutlet weak var history: UILabel!
+    @IBOutlet weak var history: UITextView!
     
     var userIsInTheMiddleOfTypingANumber: Bool = false;
     var operandStack: Array<Double> = Array<Double>()
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         if (displayValue != nil) {
             operandStack.append(displayValue!)
             println("operandStack = \(operandStack)")
-            addHistory("\(displayValue)")
+            addHistory("\(displayValue!)")
         }
     }
     
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
     }
     
     func addHistory(item: String) {
-        history.text = history.text! + "\n" + item
+        history.text = item + "\n" + history.text!
     }
     
     var displayValue: Double? {
