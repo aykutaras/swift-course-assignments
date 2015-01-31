@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var history: UITextView!
     
+    
     var userIsInTheMiddleOfTypingANumber: Bool = false;
     var operationPerformed: Bool = false
     var operandStack: Array<Double> = Array<Double>()
